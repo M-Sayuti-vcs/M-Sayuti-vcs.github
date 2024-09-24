@@ -6,18 +6,16 @@ body {
   filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.7));
 }
 
-@media (min-width: 800px) {
-  .nav-link:hover::after {
-    content: url(e.png);
-    display: block;
-    margin: auto;
-    position: absolute;
-    top: -5px;
-  }
+.nav-link:hover::after {
+  content: url(e.png);
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: -5px;
+}
 
-  .nav-link:active {
-    color: yellowgreen;
-  }
+.nav-link:active {
+  color: yellowgreen;
 }
 
 /* profil */
@@ -46,12 +44,20 @@ body {
 }
 
 .comp {
-  margin-top: 100px;
-  margin-left: 80px;
+  margin-top: 3em;
+  margin-left: 6em;
   border-bottom: 4px solid rgb(75, 158, 8);
 }
+@media (max-width: 400px) {
+  .comp {
+    width: 12rem;
+  }
+  .tombol {
+    padding-left: 1rem;
+  }
+}
 .tombol {
-  margin-left: 11em;
+  margin-left: 13em;
 }
 /* achievements */
 .achive {
@@ -69,7 +75,7 @@ body {
 }
 
 footer {
-  padding-top: 15px;
+  padding-top: 1rem;
   border-top: 2px solid black;
   box-shadow: inset 0 5px 7px black;
   height: 100px;
