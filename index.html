@@ -114,19 +114,19 @@
         </div>
         <div class="row text-center pt-2">
           <div class="col">
-            <h1>100</h1>
+            <h1 class="client">0</h1>
             <p>top clients</p>
           </div>
           <div class="col">
-            <h1>12</h1>
+            <h1 class="country">0</h1>
             <p>Countries</p>
           </div>
           <div class="col">
-            <h1>4/5</h1>
+            <h1><span class="rating"></span>/5</h1>
             <p>Rating</p>
           </div>
           <div class="col">
-            <h1>125</h1>
+            <h1 class="nProject">0</h1>
             <p>Project</p>
           </div>
         </div>
@@ -246,6 +246,55 @@
 
       gsap.from('.img-profil', { duration: 2, y: -100, opacity: 0, ease: 'elastic' });
       gsap.from('.l-nav', { duration: 1, rotateY: 360, opacity: 0 });
+    </script>
+
+    <!-- script Achivment -->
+    <script>
+      // memanggil target achivement yang akan di eksekusi
+      const target = document.getElementById('achive');
+      // memanggil element-element yang ada di dalam target
+      const klien = document.querySelector('.client');
+      const negara = document.querySelector('.country');
+      const rating = document.querySelector('.rating');
+      const jProject = document.querySelector('.nProject');
+      // function untuk menampilkan event saat content muncul di layar(viewport)
+      const tampilkanAnimasi = (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // code untuk event yang akan terjadi
+            let waktuAwal = 0;
+            function waktu(element, batas) {
+              setInterval(function () {
+                let waktuBerjalan = waktuAwal;
+                element.innerHTML = waktuBerjalan;
+                waktuBerjalan = waktuAwal;
+
+                if (waktuAwal >= batas) {
+                  clearInterval(waktu);
+                  element.innerHTML = batas;
+                }
+                waktuAwal++;
+              }, 120);
+              // code agar event ini hanya berlaku sekali
+              observer.unobserve(entry.target);
+            }
+
+            // memanggil setiap element untuk di eksekusi
+            waktu(klien, 100);
+            waktu(negara, 12);
+            waktu(jProject, 125);
+            waktu(rating, 4);
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(tampilkanAnimasi, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.6,
+      });
+
+      observer.observe(target);
     </script>
 
     <!-- My Script -->
